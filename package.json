@@ -1,6 +1,6 @@
 {
   "name": "PeerChat",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Peer Chat: Video Chatting Application",
   "main": "index.html",
   "repository": {
@@ -16,6 +16,7 @@
   "dependencies": {
     "node-static": "~0.7.1",
     "socket.io": "~0.9.16",
-    "express": "~3.4.0"
+    "express": "*",
+    "mocha": "*"
   }
 }

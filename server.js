@@ -1,14 +1,16 @@
 var static = require('node-static');
-var https = require('https');
+var express = require('express');
+var app = express();
 var file = new(static.Server)();
 var fs = require('fs');
 var options = {
     //key: fs.readFileSync('HTTPS_Permissions/key.pem'),
     //cert: fs.readFileSync('HTTPS_Permissions/cert.pem')
 };  // Here the Permissions related to HTTPS are stored in the HTTPS_Permissions Folder
-var app = https.createServer( options, function(req, res) {
-    file.serve(req, res);
-}).listen(process.env.PORT || 3000);
+
+app.listen(process.env.PORT || 3000, function() {
+     console.log('PeerChat launched.')
+});
 
 var io = require('socket.io').listen(app);
 io.sockets.on('connection', function(socket) {
