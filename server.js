@@ -1,21 +1,15 @@
-var static = require('node-static');
+var app = require('express')();
 var express = require('express');
-var app = express();
-var file = new(static.Server)();
-var fs = require('fs');
-var options = {
-    //key: fs.readFileSync('HTTPS_Permissions/key.pem'),
-    //cert: fs.readFileSync('HTTPS_Permissions/cert.pem')
-};  // Here the Permissions related to HTTPS are stored in the HTTPS_Permissions Folder
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
 
-app.listen(process.env.PORT || 3000, function() {
-     console.log('PeerChat launched.')
+app.use(express.static(__dirname + '/public'));
+
+app.get('/', function(req, res){
+  res.sendFile(__dirname + '/index.html');
 });
 
-var io = require('socket.io').listen(app);
 io.sockets.on('connection', function(socket) {
-
-
     socket.on('message', function(message) {
         socket.broadcast.emit('message', message);
     });
@@ -43,4 +37,8 @@ io.sockets.on('connection', function(socket) {
 
     });
 
+});
+
+http.listen(3000, function(){
+  console.log('listening on *:3000');
 });
