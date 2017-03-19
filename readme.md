@@ -7,7 +7,7 @@ Feel Free to commit, Appreciated.
 
 ## Demo is being setup at
 
-https://peer-chat.herokuapp.com/
+https://peer-chat.herokuapp.com:3000
 
 
 ## If you want to run on your server
