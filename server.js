@@ -1,8 +1,15 @@
-var express = require('express'); // Get the module
-var app = express()
-  , http = require('http')
-  , server = http.createServer(app)
-  , io = require('socket.io').listen(server);
+var express      = require( "express"   );
+var socket_io    = require( "socket.io" );
+
+// Express
+var app          = express();
+
+// Socket.io
+var io           = socket_io();
+app.io           = io;
+
+http = require('http')
+server = http.createServer(app)
 
 app.use(express.static(__dirname + '/public'));
 
