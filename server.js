@@ -1,8 +1,8 @@
-var express = require('express'),
-  app = express()
-  , http = require('http')
-  , server = http.createServer(app)
-  , io = require('socket.io').listen(server);
+var express = require('express');
+var http = require('http');
+var app = express();
+var server = http.createServer(app).listen(1337);
+var io = require('socket.io').listen(server);
 
 app.use(express.static(__dirname + '/public'));
 
