@@ -37,7 +37,7 @@ config :phoenix, :stacktrace_depth, 20
 config :peerchat, Peerchat.Repo,
   adapter: Ecto.Adapters.Postgres,
   username: "postgres",
-  password: "postgres",
+  password: "test",
   database: "peerchat_dev",
   hostname: "localhost",
   pool_size: 10
