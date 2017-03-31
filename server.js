@@ -1,7 +1,14 @@
-var app = require('express')();
-var express = require('express');
-var http = require('http').Server(app);
-var io = require('socket.io')(http);
+var express = require('express'),
+  app = express()
+  , http = require('http')
+  , server = http.createServer(app)
+  , io = require('socket.io').listen(server);
+
+
+//var app = require('express')();
+//var express = require('express');
+//var http = require('http').Server(app);
+//var io = require('socket.io')(http);
 
 app.use(express.static(__dirname + '/public'));
 
@@ -39,6 +46,6 @@ io.sockets.on('connection', function(socket) {
 
 });
 
-http.listen(3000, function(){
+server.listen(3000, function(){
   console.log('listening on *:3000');
 });
