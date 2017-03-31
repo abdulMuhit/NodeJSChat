@@ -1,4 +1,4 @@
-# Peerchat
+# Peerchat Written on Phoenix in Elixir
 
 To start your Phoenix app:
 
@@ -17,7 +17,9 @@ Ready to run in production? Please [check our deployment guides](http://www.phoe
 ## Troubleshooting
 
 1. I had to upgrade Elixir on my OSX desktop.
+
 brew update
+
 brew upgrade elixir
 
 ## Learn more
