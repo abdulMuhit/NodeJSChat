@@ -1,5 +1,15 @@
 # Peerchat Written on Phoenix in Elixir
 
+To install on Elixir and Phoenix on Ubuntu
+
+1. Add Erlang Solutions repo: wget https://packages.erlang-solutions.com/erlang-solutions_1.0_all.deb && sudo dpkg -i erlang-solutions_1.0_all.debRun: sudo apt-get update 
+2. Install the Erlang/OTP platform and all of its applications: sudo apt-get install esl-erlang 
+3. Install Elixir: sudo apt-get install elixir 
+4. If you receive the error ‘the task phoenix.server could not be found the first time you attempt mix phoenix.server, run the archive. mix archive.install https://github.com/phoenixframework/archives/raw/master/phoenix_new.ez
+
+
+
+
 To start your Phoenix app:
 
   * You might need to use sudo for some commands.
