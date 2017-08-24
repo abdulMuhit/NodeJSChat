@@ -1,0 +1,51 @@
+{"phone":  
+{
+		"Type": "phone_interview",
+		"Question": "You need to create a test script to test a process that will run overnight. How can you make sure that if the process is halted, your script will detect that?",
+		"Tags":["devops" , "Python"]
+}
+
+	{
+		"Type": "phone_interview",
+		"Question": "What are benefits of responsive design and give examples?",
+		"Tags": ["Web Development" , "Frontend" , "UI/UX"]
+		}
+
+	{
+		"Type": "phone_interview",
+		"Question": "What is the difference between Java and JavaScript?",
+		"Tags":["JavaScript"]
+	}
+	{
+		"Type": "phone_interview",
+		"Question": "How would you import an external CSS spreadsheet or JavaScript file into your html document?",
+		"Tags": ["JavaScript", "Web Development" , "Frontend" , "JavaScript"]
+	}
+	{
+		"Type": "phone_interview",
+		"Question": "What is DOM and its purpose?",
+		"Tags": ["JavaScript"]
+	}
+
+	{
+		"Type": "phone_interview",
+		"Question": "What is the history object?",
+		"Tags": ["JavaScript"]
+	}
+	{
+		"Type": "phone_interview",
+		"Question": "How do you write a comment in JavaScript?",
+		"Tags":["JavaScript"]
+		}
+	{
+		"Type":"phone_interview",
+		"Question": "How do you write a function in JavaScript?",
+		"Tags": ["JavaScript"]
+		}
+	{
+		"Type":"phone_interview",
+		"Question": "What are the JavaScript data types?",
+		"Tags":["JavaScript"]
+	}
+}		
+

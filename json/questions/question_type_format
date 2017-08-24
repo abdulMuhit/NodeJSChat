@@ -1,0 +1,30 @@
+{
+		"Type": "phone_interview",
+		"Question": "You need to create a test script to test a process that will run overnight. How can you make sure that if the process is halted, your script will detect that?",
+		"Job": "<Job_id>",
+		"Author": {
+				"name":"glassdoor.com"
+		}
+		"Tags":["devops" , "Python"]
+		"Answer":[{"candidate":"<>",
+				"content":"<user_input"}]
+		
+		"bot_type": "Mock_interview",
+		"bot_question": "What was the most interesting project you have worked on and why?",
+		"bot_tags": "general",
+		"User_answer":"user_input",
+		"Correct_answer":"Bot should be able to improve on user answer"
+}		
+
+		"bot_type":"teamwork",
+		"bot_question":"Chris has a binary string, B, of a length of n. But he thinks that a binary string can only be beautiful if it does not contain a string of "0110". The values can be changed from 0 to 1 and vice versa. Count and print the minimum number of steps needed to make Chris see the string as beautiful.",
+		"bot_tags":"general",
+		"User_answer":"User will work with others in chat room/video/audio even have white boards to find best resolution to given questions."
+		
+
+}
+
+
+
+
+
