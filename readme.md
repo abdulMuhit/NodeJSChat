@@ -15,7 +15,9 @@ https://peer-chat.herokuapp.com/
   - run npm install from your CLI
   - Add Turn Server API Key to script tag of index.html
   - If you don't have API Key you can get it for free on TurnServer.com
+
   ```node server.js```
+
   - Open localhost:3000
   - And You Go....
 
