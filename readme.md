@@ -18,8 +18,6 @@ https://peer-chat.herokuapp.com/
 
   ```node server.js```
 
-	- Debug
-
 	```NODE_DEBUG=cluster,net,http,fs,tls,module,timers node server.js```
 
   - Open localhost:3000
