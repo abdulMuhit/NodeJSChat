@@ -11,17 +11,20 @@ https://peer-chat.herokuapp.com/
 
 ## If you want to run on your server
 
-  - Clone to your machine
-  - run npm install from your CLI
+## NPM
+
+```npm install```
+
+## Start Server
+
+```NODE_DEBUG=cluster,net,http,fs,tls,module,timers node server.js```
+
+Go to localhost:3001
+
+## Working On
+
   - Add Turn Server API Key to script tag of index.html
   - If you don't have API Key you can get it for free on TurnServer.com
-
-  ```node server.js```
-
-	```NODE_DEBUG=cluster,net,http,fs,tls,module,timers node server.js```
-
-  - Open localhost:3000
-  - And You Go....
 
 ## Stop Node Server
 
