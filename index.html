@@ -86,7 +86,9 @@
 
 <script>
 
-    $('#messages').css('height', window.innerHeight - 200)
+		$( document ).ready(function() {
+    	$('#messages').css('height', window.innerHeight - 200)
+		});
 
     function auto_scroll() {
         var elem = document.getElementById('messages');
