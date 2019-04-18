@@ -28,7 +28,8 @@ io.sockets.on('connection', function(socket){
   });
 });
 
-http.listen(3001, function(){
+// allow heroku to choose port
+http.listen(process.env.PORT || 5000, function(){
   console.log('listening on *:3001');
 });
 
