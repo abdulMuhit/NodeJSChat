@@ -8,20 +8,16 @@ http://peer-chat.herokuapp.com/?room=1
 
 ## install packages from package.json
 
+using the pm2 app server. forever app server is outdated and insecure.
+
 ```npm install```
-
-## install forever globally
-
-```npm install forever -g```
 
 ## run the app server
 
-```forever start index.js```
+```npm start```
 
 ## where to specify port
 
-```port is listed at bottom of index.js```
+set local port at 5000
 
-## run the app server forever
-
-```sudo forever start index.js```
+port is listed at bottom of index.js
