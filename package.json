@@ -4,7 +4,7 @@
   "description": "my first socket.io app",
   "dependencies": {
     "express": "^4.10.2",
-    "forever": "^1.0.0",
+    "pm2": "^3.5.0",
     "rollbar": "^2.5.5",
     "socket.io": "^2.2.0"
   }
