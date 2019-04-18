@@ -2,6 +2,8 @@
 
 Working on adding WebRTC Video Support
 
+# You can view the demo on Heroku
+
 ## https is not working yet.
 
 http://peer-chat.herokuapp.com/?room=1
