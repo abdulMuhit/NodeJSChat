@@ -1,5 +1,6 @@
-# Socket.io Example
-Socket.io chat example
+# Peer Chat (Using Socket.io)
+
+Working on adding WebRTC Video Support
 
 ## install packages from package.json
 
