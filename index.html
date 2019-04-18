@@ -1,95 +1,133 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="Video chat using socket.io" content="">
-    <meta name="author" content="Hiren Kavad">
-  
-     <!-- <script src="//api.turnservers.com/api.js?key=Here You API KEY"></script> -->
+<!doctype html>
+<html>
+<head>
+    <title>Socket IO</title>
 
-    <!-- Obtain FREE TURN SERVER AND API KEY From Turnservers.com -->
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link type="image/x-icon" href="/favicon.ico" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+<body>
 
-    <title>Video Chat By Hiren Kavad</title>
-
-    <!-- Bootstrap core CSS -->
-     <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/css/bootstrap.css" rel="stylesheet">
-     <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-      <link href="css/custom.css" rel="stylesheet">
-
-  
-    <!-- Just for debugging purposes. Don't actually copy this line! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
-
-  <body>
-
-    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Video Chat</a>
-        </div>
-        <div class="navbar-collapse collapse">
-          <form class="navbar-form navbar-right" >
-            <div class="form-group">
-              <input type="text" name="userId" id="userId" placeholder="User" class="form-control">
-            </div>
-            <div class="form-group">
-             <input type="text" name="roomId" id="roomId" placeholder="Room" class="form-control">
-            </div>
-           <input tupe="button" id="startButton" class="btn btn-success" value="Join"/>
-          </form>
-        </div>
-      </div>
-    </div>
-<div class="jumbotron">
- <div class="row ">
-         
-          
-          <div class="col-md-8" >
-            <div class="row">
-							<h3>Video</h3>
-              <video id='remoteVideo' autoplay width="100%" class="remote"></video>
-            </div>
-          </div>
-          <div class="col-md-4 local" > 
-            <div class="row">           
-							<h3>Local Video</h3>
-               <video id='localVideo' autoplay muted width="100%" ></video>
-            </div>
-            <div class="row">
-             
-              <div id="chat" class="txtarea fullsz"></div>
-              <input type="text" id="msg" placeholder="Press enter to send message" class="fullsz form-control"/>          
-            </div>
-          </div>
-        </div>
-
-      <footer class="footer">        
-        <i class="fa fa-github"></i><a href="https://github.com/Hironate/PeerChat" target="_blank"> Fork Me on Github</a>
-      </footer>
+<div class="column-center">
+    <div id="messages"></div>
+    <form>
+        <input type="text" placeholder="how will the role's success be measured" id="msg_input" autocomplete="off" />
+        <button id="chat_btn"><i class="fa fa-angle-double-up fa-2x" aria-hidden="true"></i></button>
+    </form>
 </div>
 
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+<script src="https://use.fontawesome.com/2c93e0255c.js"></script>
+<link rel="stylesheet" type="text/css" href="css/style.css" />
 
-    <!-- Application Specific Javascripts -->
-    <script src='/socket.io/socket.io.js'></script>
-    <script src='js/main.js'></script>
+<!--
+<video autoplay></video>
+-->
 
-  </body>
+<script>
+
+    $("input:text:visible:first").focus();
+
+    /*
+    function hasGetUserMedia() {
+        return !!(navigator.getUserMedia || navigator.webkitGetUserMedia ||
+        navigator.mozGetUserMedia || navigator.msGetUserMedia);
+    }
+
+
+    if (hasGetUserMedia()) {
+        // Good to go!
+        console.log('audio available');
+        navigator.getUserMedia  = navigator.getUserMedia ||
+                navigator.webkitGetUserMedia ||
+                navigator.mozGetUserMedia ||
+                navigator.msGetUserMedia;
+    } else {
+        console.log('getUserMedia() is not supported in your browser');
+    }
+
+
+    var errorCallback = function(e) {
+        console.log('Reeeejected!', e);
+    };
+
+    function initializeRecorder(stream) {
+        var audioContext = window.AudioContext;
+        var context = new audioContext();
+        var audioInput = context.createMediaStreamSource(stream);
+        var bufferSize = 2048;
+        // create a javascript node
+        var recorder = context.createJavaScriptNode(bufferSize, 1, 1);
+        // specify the processing function
+        recorder.onaudioprocess = recorderProcess;
+        // connect stream to our recorder
+        audioInput.connect(recorder);
+        // connect our recorder to the previous destination
+        recorder.connect(context.destination);
+    }
+
+    function recorderProcess(e) {
+        var left = e.inputBuffer.getChannelData(0);
+    }
+
+    var video = document.querySelector('video');
+
+    if (navigator.getUserMedia) {
+        navigator.getUserMedia({audio: true, video: true}, function(stream) {
+            video.src = window.URL.createObjectURL(stream);
+        }, errorCallback);
+    } else {
+        video.src = 'somevideo.webm'; // fallback.
+    }
+    */
+</script>
+
+<script>
+
+    $('#messages').css('height', window.innerHeight - 200)
+
+    function auto_scroll() {
+        var elem = document.getElementById('messages');
+        elem.scrollTop = elem.scrollHeight;
+    }
+
+    function getSearchParameters(key) {
+        var prmstr = window.location.search.substr(1);
+        arr = prmstr != null && prmstr != "" ? transformToAssocArray(prmstr) : {};
+        return arr[key] || 'someone';
+    }
+
+    function transformToAssocArray( prmstr ) {
+        var params = {};
+        var prmarr = prmstr.split("&");
+        for ( var i = 0; i < prmarr.length; i++) {
+            var tmparr = prmarr[i].split("=");
+            params[tmparr[0]] = tmparr[1];
+        }
+        return params;
+    }
+
+    var socket = io();
+
+    // join room
+    socket.emit('subscribe', getSearchParameters('room'));
+    socket.emit('send', { handle: 'MyBot', room: getSearchParameters('room'), message: getSearchParameters('handle') + ' entered room ' + getSearchParameters('room') });
+    socket.emit('send', { handle: 'MyBot', room: getSearchParameters('room'), message: 'chat starts at 6:30pm Pacific Time' });
+    socket.emit('send', { handle: 'MyBot', room: getSearchParameters('room'), message: 'I can help you match your job. What is your favorite programming langugage?' });
+
+    $('#chat_btn').click(function() {
+        socket.emit('send', { handle: getSearchParameters('handle'), room: getSearchParameters('room'), message: $('#msg_input').val() } );
+        $('#msg_input').val('');
+        return false;
+    });
+
+    socket.on('message', function (msg) {
+        $('#messages').append($('<li>').text(msg));
+        auto_scroll();
+    });
+
+</script>
+</body>
 </html>

@@ -1,0 +1,197 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body
+{
+    height: 100%;
+    font: 13px Helvetica, Arial;
+
+    --action-color: rgb(70, 137, 192);
+    --action-color-2: rgb(70, 125, 172);
+    --action-color-3: rgb(145, 11, 47);
+    --skill-color: rgb(130, 5, 48);
+
+}
+
+// debug
+// * { border: 1px solid black; }
+
+.chats {
+    float: left;
+    width: 330px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height:80vh;
+}
+
+.column-right
+{
+    float: right; width: 400px;
+}
+
+.column-center { float: left; width: 550px; }
+
+#messages {
+    margin: 5px;
+    list-style-type: none; padding: 0;
+    #overflow-x: hidden;
+    #height:30vh;
+    #height: 100px;
+    width: 300px;
+    background-color: white;
+    border-radius: 12px;
+}
+
+#messages li {
+    padding: 5px 10px;
+    background: rgb(153, 204, 255);
+}
+
+#messages li:nth-child(odd)
+{
+    background: #eee;
+}
+
+.header {
+    margin: 5px;
+    color: white;
+}
+
+form {
+    margin: 5px;
+    #padding: 3px; position: fixed; bottom: 0;
+    position: relative;
+    width: 520px;
+}
+
+form input {
+    float: left;
+    border: 0;
+    padding: 10px;
+    width: 200px;
+    margin-right: 5px;
+    border-radius: 12px;
+}
+
+form button {
+    float: left;
+    width: 100px;
+    background: var(--skill-color);
+    border: none;
+    padding: 6px;
+    border-radius: 12px;
+    color: white;
+}
+
+.action {
+    color: var(--action-color);
+}
+
+.select_chat {
+
+    font-family: "Times New Roman";
+
+    width: 300px;
+    padding: 5px;
+    margin: 5px;
+    height: 110px;
+
+    color: white;
+    background: var(--action-color-2);
+
+
+
+    border-radius: 12px;
+}
+
+.blue {
+    background: var(--action-color);
+}
+
+.resume {
+    float: left;
+
+    width: 300px;
+    padding: 5px;
+    margin: 5px;
+
+    color: white;
+    background: var(--action-color);
+
+    border-radius: 12px;
+}
+
+.next {
+    display: block;
+    clear: both;
+}
+
+.challenges {
+    float: left;
+
+    width: 300px;
+    height: 300px;
+    overflow: auto;
+    padding: 5px;
+    margin: 5px;
+
+    background-color: white;
+
+    border-radius: 12px;
+}
+
+.time a:link {
+    font-size: larger;
+    color: whitesmoke;
+}
+
+.time a:visited {
+    font-size: larger;
+    color: whitesmoke;
+}
+
+
+.host {
+    color: navajowhite;
+}
+
+.skill {
+    display: inline;
+    float: left;
+    margin: 2px;
+    padding: 5px;
+    border-radius: 6px;
+    background: white;
+    color: darkgreen;
+}
+
+.join {
+    font-family: "Trebuchet MS";
+    display: inline;
+    float: left;
+    margin: 4px;
+    padding: 5px;
+    border-radius: 6px;
+    background-color: var(--skill-color);
+    color: darkgreen;
+}
+
+.submit_btn {
+    font-family: "Trebuchet MS";
+    display: inline;
+    float: left;
+    margin: 4px;
+    padding: 5px;
+    border-radius: 6px;
+    background-color: white;
+    color: darkgreen;
+    font-size: larger;
+}
+
+.logo {
+    float: left;
+    width: 50px;
+
+}
+
+.logo_text {
+    font-family: 'Montserrat', sans-serif;
+}

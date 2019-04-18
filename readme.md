@@ -1,55 +1,22 @@
-## PeerChat
+# Socket.io Example
+Socket.io chat example
 
-
-PeerChat is a Simple Project for Peer to Peer Video Chat with Node.js and Socket.io.
-Feel Free to commit, Appreciated.
-
-
-## Demo is being setup at
-
-https://peer-chat.herokuapp.com/
-
-## If you want to run on your server
-
-## NPM
+## install packages from package.json
 
 ```npm install```
 
-## Start Server
+## install forever globally
 
-```NODE_DEBUG=cluster,net,http,fs,tls,module,timers node server.js```
+```npm install forever -g```
 
-Go to localhost:3001
+## run the app server
 
-## Working On
+```forever start index.js```
 
-  - Add Turn Server API Key to script tag of index.html
-  - If you don't have API Key you can get it for free on TurnServer.com
+## where to specify port
 
-## Stop Node Server
+```port is listed at bottom of index.js```
 
-```killall node```
+## run the app server forever
 
-## Authors
-
-* Nathan Sire
-
-* Hiren Kavad
-
-
-## Contributors
-
-* Shubham Chopra
-
-* Zachary Stenger
-
-* Athul B Raj
-
-
-## License
-
-This bundle is dual-licensed under MIT and GPL licenses.
-
-* [http://www.opensource.org/licenses/mit-license.php](http://www.opensource.org/licenses/mit-license.php)
-* [http://www.gnu.org/licenses/gpl.html](http://www.gnu.org/licenses/gpl.html)
-
+```sudo forever start index.js```
