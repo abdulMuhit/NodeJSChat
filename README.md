@@ -2,6 +2,10 @@
 
 Working on adding WebRTC Video Support
 
+## https is not working yet.
+
+http://peer-chat.herokuapp.com/?room=1
+
 ## install packages from package.json
 
 ```npm install```
