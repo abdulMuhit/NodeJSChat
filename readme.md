@@ -9,9 +9,9 @@ Feel Free to commit, Appreciated.
 
 https://peer-chat.herokuapp.com/
 
-## If you want to run on your server
+## If you want to run on your local server
 
-## NPM
+```cd PeerChat```
 
 ```npm install```
 
