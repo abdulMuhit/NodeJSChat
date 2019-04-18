@@ -2,22 +2,26 @@
 
 Working on adding WebRTC Video Support
 
+# You can view the demo on Heroku
+
+## https is not working yet.
+
+http://peer-chat.herokuapp.com/?room=1
+
 ## install packages from package.json
+
+using the PM2 app server. forever app server is outdated and insecure.
+
+https://github.com/Unitech/pm2
 
 ```npm install```
 
-## install forever globally
-
-```npm install forever -g```
-
 ## run the app server
 
-```forever start index.js```
+```npm start```
 
 ## where to specify port
 
-```port is listed at bottom of index.js```
+set local port at 5000
 
-## run the app server forever
-
-```sudo forever start index.js```
+port is listed at bottom of index.js
