@@ -32,9 +32,8 @@ html, body
 #messages {
     margin: 5px;
     list-style-type: none; padding: 0;
-    #overflow-x: hidden;
-    #height:30vh;
-    #height: 100px;
+    overflow-x: hidden;
+		overflow-y: scroll;
     width: 300px;
     background-color: white;
     border-radius: 12px;
