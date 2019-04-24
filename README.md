@@ -23,7 +23,3 @@ https://github.com/Unitech/pm2
 Listen on local port 3001
 
 Port is listed at bottom of index.js
-
-## Live Demo
-
-<iframe src="https://peer-chat.herokuapp.com/></iframe>
