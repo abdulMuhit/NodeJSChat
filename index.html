@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-    <title>Socket IO</title>
+    <title>Job Friender Chat</title>
 
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
@@ -12,14 +12,14 @@
 <div class="column-center">
     <div id="messages"></div>
     <form>
-        <input type="text" placeholder="how will the role's success be measured" id="msg_input" autocomplete="off" />
-        <button id="chat_btn"><i class="fa fa-angle-double-up fa-2x" aria-hidden="true"></i></button>
+        <input type="text" placeholder="enter message..." id="msg_input" autocomplete="off" />
+        <button id="chat_btn"><i class="fas fa-comments" aria-hidden="true"></i></button>
     </form>
 </div>
 
 <script src="/socket.io/socket.io.js"></script>
 <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
-<script src="https://use.fontawesome.com/2c93e0255c.js"></script>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" href="css/style.css" />
 
 <!--
@@ -85,10 +85,6 @@
 </script>
 
 <script>
-
-		$( document ).ready(function() {
-    	$('#messages').css('height', window.innerHeight - 200)
-		});
 
     function auto_scroll() {
         var elem = document.getElementById('messages');
