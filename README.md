@@ -6,7 +6,7 @@ Working on adding WebRTC Video Support
 
 https://peer-chat.herokuapp.com/?room=1
 
-## install packages from package.json
+## Install packages from package.json
 
 using the PM2 app server. forever app server is outdated and insecure.
 
@@ -14,12 +14,12 @@ https://github.com/Unitech/pm2
 
 ```npm install```
 
-## run the app server
+## Run the app server
 
 ```npm start```
 
-## where to specify port
+## Where to specify port
 
-set local port at 5000
+Listen on local port 3001
 
-port is listed at bottom of index.js
+Port is listed at bottom of index.js
