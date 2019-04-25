@@ -1,6 +1,6 @@
-# Peer Chat (Using Socket.io)
+# Job Friender Chat
 
-Working on adding WebRTC Video Support
+This tool is being built as a distributed chat tool that you can train to look for friends who match your communication style. Use it to make connections with jobs, friends and teams. 
 
 # You can view the demo on Heroku
 
