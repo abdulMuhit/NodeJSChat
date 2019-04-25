@@ -9,6 +9,20 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 <body>
 
+<div id="container">
+    <h1><a href="//webrtc.github.io/samples/" title="WebRTC samples homepage">WebRTC samples</a></h1>
+
+    <video style="width: 300px;" id="gum-local" autoplay playsinline></video>
+
+    <button id="showVideo">Open camera</button>
+
+    <div id="errorMsg"></div>
+
+</div>
+
+<script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+<script src="main.js"></script>
+
 <div class="column-center">
     <div id="messages"></div>
     <form>
@@ -22,19 +36,7 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" href="css/style.css" />
 
-<div id="container">
-    <h1><a href="//webrtc.github.io/samples/" title="WebRTC samples homepage">WebRTC samples</a>
-        <span>getUserMedia</span></h1>
 
-    <video id="gum-local" autoplay playsinline></video>
-    <button id="showVideo">Open camera</button>
-
-    <div id="errorMsg"></div>
-
-</div>
-
-<script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
-<script src="main.js"></script>
 
 <!--
 <video autoplay></video>
