@@ -43,7 +43,7 @@ html, body
 .column-center { height: 100%; float: left; width: 550px; }
 
 #messages {
-	height: 80%;
+	height: 50%;
     margin: 5px;
     list-style-type: none; padding: 0;
     overflow-x: hidden;
