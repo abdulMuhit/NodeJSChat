@@ -9,7 +9,11 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 <body>
 
-
+<div id="container">
+<video style="width: 300px;" id="gum-local" autoplay playsinline></video>
+<button id="showVideo">Open camera</button>
+<div id="errorMsg"></div>
+</div>
 
 <div class="column-center">
     <div id="messages"></div>
@@ -17,12 +21,6 @@
         <input type="text" placeholder="enter message..." id="msg_input" autocomplete="off" />
         <button id="chat_btn"><i class="fas fa-comments" aria-hidden="true"></i></button>
     </form>
-
-<div id="container">
-    <video style="width: 300px;" id="gum-local" autoplay playsinline></video>
-    <button id="showVideo">Open camera</button>
-    <div id="errorMsg"></div>
-</div>
 
 <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
 <script src="main.js"></script>
