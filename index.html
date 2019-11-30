@@ -1,137 +1,152 @@
 <!doctype html>
 <html>
+
 <head>
     <title>Job Friender Chat</title>
 
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
     <link type="image/x-icon" href="/favicon.ico" />
-    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+
+
 <body>
+    <div id="container">
+        <p><button id="showVideo">Open camera</button></p>
+        <video style="width: 300px;" id="gum-local" autoplay playsinline></video>
+        <div id="errorMsg"></div>
+    </div>
 
-<div id="container">
-				<p><button id="showVideo">Open camera</button></p>
-<video style="width: 300px;" id="gum-local" autoplay playsinline></video>
-<div id="errorMsg"></div>
-</div>
+    <div class="column-center">
+        <div id="messages"></div>
+        <form>
+            <input type="text" placeholder="enter message..." id="msg_input" autocomplete="off" />
+            <button id="chat_btn"></button>
+        </form>
 
-<div class="column-center">
-    <div id="messages"></div>
-    <form>
-        <input type="text" placeholder="enter message..." id="msg_input" autocomplete="off" />
-        <button id="chat_btn"><i class="fas fa-comments" aria-hidden="true"></i></button>
-    </form>
+        <script src="/adapter-latest.js"></script>
+        <script src="/main.js"></script>
 
-<script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
-<script src="main.js"></script>
+    </div>
 
-</div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/jquery-1.11.1.js"></script>
 
-<script src="/socket.io/socket.io.js"></script>
-<script src="https://code.jquery.com/jquery-1.11.1.js"></script>
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-<link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
 
-<script>
+    <script>
+        $("input:text:visible:first").focus();
 
-    $("input:text:visible:first").focus();
-
-    /*
-    function hasGetUserMedia() {
-        return !!(navigator.getUserMedia || navigator.webkitGetUserMedia ||
-        navigator.mozGetUserMedia || navigator.msGetUserMedia);
-    }
-
-
-    if (hasGetUserMedia()) {
-        // Good to go!
-        console.log('audio available');
-        navigator.getUserMedia  = navigator.getUserMedia ||
-                navigator.webkitGetUserMedia ||
-                navigator.mozGetUserMedia ||
-                navigator.msGetUserMedia;
-    } else {
-        console.log('getUserMedia() is not supported in your browser');
-    }
-
-
-    var errorCallback = function(e) {
-        console.log('Reeeejected!', e);
-    };
-
-    function initializeRecorder(stream) {
-        var audioContext = window.AudioContext;
-        var context = new audioContext();
-        var audioInput = context.createMediaStreamSource(stream);
-        var bufferSize = 2048;
-        // create a javascript node
-        var recorder = context.createJavaScriptNode(bufferSize, 1, 1);
-        // specify the processing function
-        recorder.onaudioprocess = recorderProcess;
-        // connect stream to our recorder
-        audioInput.connect(recorder);
-        // connect our recorder to the previous destination
-        recorder.connect(context.destination);
-    }
-
-    function recorderProcess(e) {
-        var left = e.inputBuffer.getChannelData(0);
-    }
-
-    var video = document.querySelector('video');
-
-    if (navigator.getUserMedia) {
-        navigator.getUserMedia({audio: true, video: true}, function(stream) {
-            video.src = window.URL.createObjectURL(stream);
-        }, errorCallback);
-    } else {
-        video.src = 'somevideo.webm'; // fallback.
-    }
-    */
-</script>
-
-<script>
-
-    function auto_scroll() {
-        var elem = document.getElementById('messages');
-        elem.scrollTop = elem.scrollHeight;
-    }
-
-    function getSearchParameters(key) {
-        var prmstr = window.location.search.substr(1);
-        arr = prmstr != null && prmstr != "" ? transformToAssocArray(prmstr) : {};
-        return arr[key] || 'someone';
-    }
-
-    function transformToAssocArray( prmstr ) {
-        var params = {};
-        var prmarr = prmstr.split("&");
-        for ( var i = 0; i < prmarr.length; i++) {
-            var tmparr = prmarr[i].split("=");
-            params[tmparr[0]] = tmparr[1];
+        /*
+        function hasGetUserMedia() {
+            return !!(navigator.getUserMedia || navigator.webkitGetUserMedia ||
+            navigator.mozGetUserMedia || navigator.msGetUserMedia);
         }
-        return params;
-    }
 
-    var socket = io();
 
-    // join room
-    socket.emit('subscribe', getSearchParameters('room'));
-    socket.emit('send', { handle: 'MyBot', room: getSearchParameters('room'), message: getSearchParameters('handle') + ' entered room ' + getSearchParameters('room') });
-    socket.emit('send', { handle: 'MyBot', room: getSearchParameters('room'), message: 'chat starts at 6:30pm Pacific Time' });
-    socket.emit('send', { handle: 'MyBot', room: getSearchParameters('room'), message: 'I can help you match your job. What is your favorite programming langugage?' });
+        if (hasGetUserMedia()) {
+            // Good to go!
+            console.log('audio available');
+            navigator.getUserMedia  = navigator.getUserMedia ||
+                    navigator.webkitGetUserMedia ||
+                    navigator.mozGetUserMedia ||
+                    navigator.msGetUserMedia;
+        } else {
+            console.log('getUserMedia() is not supported in your browser');
+        }
 
-    $('#chat_btn').click(function() {
-        socket.emit('send', { handle: getSearchParameters('handle'), room: getSearchParameters('room'), message: $('#msg_input').val() } );
-        $('#msg_input').val('');
-        return false;
-    });
 
-    socket.on('message', function (msg) {
-        $('#messages').append($('<li>').text(msg));
-        auto_scroll();
-    });
+        var errorCallback = function(e) {
+            console.log('Reeeejected!', e);
+        };
 
-</script>
+        function initializeRecorder(stream) {
+            var audioContext = window.AudioContext;
+            var context = new audioContext();
+            var audioInput = context.createMediaStreamSource(stream);
+            var bufferSize = 2048;
+            // create a javascript node
+            var recorder = context.createJavaScriptNode(bufferSize, 1, 1);
+            // specify the processing function
+            recorder.onaudioprocess = recorderProcess;
+            // connect stream to our recorder
+            audioInput.connect(recorder);
+            // connect our recorder to the previous destination
+            recorder.connect(context.destination);
+        }
+
+        function recorderProcess(e) {
+            var left = e.inputBuffer.getChannelData(0);
+        }
+
+        var video = document.querySelector('video');
+
+        if (navigator.getUserMedia) {
+            navigator.getUserMedia({audio: true, video: true}, function(stream) {
+                video.src = window.URL.createObjectURL(stream);
+            }, errorCallback);
+        } else {
+            video.src = 'somevideo.webm'; // fallback.
+        }
+        */
+    </script>
+
+    <script>
+        function auto_scroll() {
+            var elem = document.getElementById('messages');
+            elem.scrollTop = elem.scrollHeight;
+        }
+
+        function getSearchParameters(key) {
+            var prmstr = window.location.search.substr(1);
+            arr = prmstr != null && prmstr != "" ? transformToAssocArray(prmstr) : {};
+            return arr[key] || 'someone';
+        }
+
+        function transformToAssocArray(prmstr) {
+            var params = {};
+            var prmarr = prmstr.split("&");
+            for (var i = 0; i < prmarr.length; i++) {
+                var tmparr = prmarr[i].split("=");
+                params[tmparr[0]] = tmparr[1];
+            }
+            return params;
+        }
+
+        var socket = io();
+
+        // join room
+        socket.emit('subscribe', getSearchParameters('room'));
+        socket.emit('send', {
+            handle: 'MyBot',
+            room: getSearchParameters('room'),
+            message: getSearchParameters('handle') + ' entered room ' + getSearchParameters('room')
+        });
+        socket.emit('send', {
+            handle: 'MyBot',
+            room: getSearchParameters('room'),
+            message: 'chat starts at 6:30pm Pacific Time'
+        });
+        socket.emit('send', {
+            handle: 'MyBot',
+            room: getSearchParameters('room'),
+            message: 'I can help you match your job. What is your favorite programming langugage?'
+        });
+
+        $('#chat_btn').click(function () {
+            socket.emit('send', {
+                handle: getSearchParameters('handle'),
+                room: getSearchParameters('room'),
+                message: $('#msg_input').val()
+            });
+            $('#msg_input').val('');
+            return false;
+        });
+
+        socket.on('message', function (msg) {
+            $('#messages').append($('<li>').text(msg));
+            auto_scroll();
+        });
+    </script>
 </body>
+
 </html>
